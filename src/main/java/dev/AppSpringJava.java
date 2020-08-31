@@ -1,6 +1,5 @@
 package dev;
 
-import java.util.Scanner;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import dev.config.AppConfig;

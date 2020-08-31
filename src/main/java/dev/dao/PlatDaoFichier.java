@@ -10,13 +10,22 @@ import java.nio.file.StandardOpenOption;
 import java.util.Collections;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Primary;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
+
 import static java.util.stream.Collectors.toList;
 
+@Repository
+@Primary
+@PropertySource("app.properties")
 public class PlatDaoFichier implements IPlatDao {
 
     private String fichierStockage;
 
-    public PlatDaoFichier(String fichierStockage) {
+    public PlatDaoFichier(@Value("${fichier}") String fichierStockage) {
         this.fichierStockage = fichierStockage;
         if (!Files.exists(Paths.get(this.fichierStockage))) {
             try {
