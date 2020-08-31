@@ -9,8 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 //Le stéréotype @Configuration précise que cette classe servira de configuration.
 @Configuration
-@ComponentScan("dev")
-
+@ComponentScan({"dev.ihm", "dev.dao","dev.service"})
 public class AppConfig {
 
 	@Bean
