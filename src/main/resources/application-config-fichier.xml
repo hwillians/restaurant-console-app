@@ -9,7 +9,7 @@ http://www.springframework.org/schema/util/spring-util.xsd">
 
 
 	<bean id="dao" class="dev.dao.PlatDaoFichier">
-		<constructor-arg index="0" type="java.lang.String" value="/Users/helvin/Desktop/restaurant.txt" />
+		<constructor-arg name="fichierStockage" value="/Users/helvin/Documents/workspace-spring-tool-suite-4-4.6.2.RELEASE/restaurant-console-app/restaurant.txt" />
 	</bean>
 
 
