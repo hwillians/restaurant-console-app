@@ -7,7 +7,9 @@ import dev.ihm.options.OptionListerPlats;
 import dev.ihm.options.OptionTerminer;
 import dev.service.IPlatService;
 
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -34,12 +36,18 @@ public class Menu {
     }
     
     @Autowired
-    public Menu(Scanner scanner, ApplicationContext context) {
+    public Menu(Scanner scanner, List<IOptionMenu> optionMenus) {
+    	
+    	optionMenus.sort(Comparator.comparing(IOptionMenu::getPoids));
         
-		actions.put(1, context.getBean(OptionListerPlats.class));
-        actions.put(2, context.getBean(OptionAjouterPlat.class));
-        actions.put(99, context.getBean(OptionTerminer.class));
+    	int index = 1;
+        for (IOptionMenu optionMenu: optionMenus) {
+            actions.put(index, optionMenu);
+            index++;
+        }
+
         this.scanner = scanner;
+
 }
 
     public void afficher() {

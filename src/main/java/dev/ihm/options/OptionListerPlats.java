@@ -24,4 +24,10 @@ public class OptionListerPlats implements IOptionMenu {
         this.service.listerPlats().forEach(plat -> System.out.println(plat.getNom() + " (" + (plat.getPrixEnCentimesEuros() / 100) + " €)"));
 
     }
+    
+    @Override
+    public int getPoids() {
+        return 101;
+    }
+
 }

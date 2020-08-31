@@ -43,6 +43,12 @@ public class OptionAjouterPlat implements IOptionMenu {
                 System.out.println(e.getMessage());
             }
         }
-
+        
     }
+    
+    @Override
+    public int getPoids() {
+        return 102;
+    }
+
 }

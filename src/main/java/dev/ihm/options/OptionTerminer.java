@@ -15,4 +15,11 @@ public class OptionTerminer implements IOptionMenu {
     public void executer() {
         throw new PlatException("Aurevoir");
     }
+    
+    @Override
+    public int getPoids() {
+        return 199;
+    }
+
+    
 }
