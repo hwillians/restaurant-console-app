@@ -4,10 +4,9 @@ import dev.exception.PlatException;
 import dev.service.IPlatService;
 
 import java.util.Scanner;
+import org.springframework.stereotype.Controller;
 
-import org.springframework.stereotype.Component;
-
-@Component
+@Controller
 public class OptionAjouterPlat implements IOptionMenu {
     private Scanner scanner;
 

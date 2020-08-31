@@ -1,10 +1,10 @@
 package dev.ihm.options;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
 
 import dev.exception.PlatException;
 
-@Component
+@Controller
 public class OptionTerminer implements IOptionMenu {
     @Override
     public String getTitre() {

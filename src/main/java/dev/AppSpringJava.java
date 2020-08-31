@@ -12,6 +12,8 @@ public class AppSpringJava {
 		// Création du contexte Spring à partir d'une configuration Java
 		try(AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class)){
 			// Recueration du contexte Spring à partir d'une configuration Java
+			
+			
 			Menu menu = context.getBean(Menu.class);
 
 			menu.afficher();

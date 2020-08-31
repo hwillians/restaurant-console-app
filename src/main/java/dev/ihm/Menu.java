@@ -1,6 +1,5 @@
 package dev.ihm;
 
-import dev.config.AppConfig;
 import dev.exception.PlatException;
 import dev.ihm.options.IOptionMenu;
 import dev.ihm.options.OptionAjouterPlat;
@@ -13,8 +12,8 @@ import java.util.Map;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.stereotype.Component;
+import org.springframework.context.ApplicationContext;
+
 import org.springframework.stereotype.Controller;
 
 @Controller
@@ -26,20 +25,22 @@ public class Menu {
     
     private Scanner scanner;
 
-    public Menu(Scanner scanner, IPlatService service, AnnotationConfigApplicationContext context) {
-       
-    		actions.put(1, context.getBean(OptionListerPlats.class));
-            actions.put(2, context.getBean(OptionAjouterPlat.class));
-            actions.put(99, context.getBean(OptionTerminer.class));
-            this.scanner = scanner;
+    public Menu(Scanner scanner, IPlatService service) {
     		
-
-    	
-//    	actions.put(1, new OptionListerPlats(service));
-//        actions.put(2, new OptionAjouterPlat(scanner, service));
-//        actions.put(99, new OptionTerminer());
-//        this.scanner = scanner;
+			 actions.put(1, new OptionListerPlats(service));
+			 actions.put(2, new OptionAjouterPlat(scanner, service));
+			 actions.put(99, new OptionTerminer());
+			 this.scanner = scanner;
     }
+    
+    @Autowired
+    public Menu(Scanner scanner, ApplicationContext context) {
+        
+		actions.put(1, context.getBean(OptionListerPlats.class));
+        actions.put(2, context.getBean(OptionAjouterPlat.class));
+        actions.put(99, context.getBean(OptionTerminer.class));
+        this.scanner = scanner;
+}
 
     public void afficher() {
 
