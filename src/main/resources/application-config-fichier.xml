@@ -8,7 +8,10 @@ http://www.springframework.org/schema/util
 http://www.springframework.org/schema/util/spring-util.xsd">
 
 	
-	<bean id="dao" class="dev.dao.PlatDaoMemoire"/>
+	<bean id="dao" class="dev.dao.PlatDaoFichier">
+	<constructor-arg name="fichierStockage" value="fichierStockage"/>
+	</bean>
+	
 	
 	<bean id="service" class="dev.service.PlatServiceVersion1">
 	<constructor-arg name="dao" ref="dao"/>
