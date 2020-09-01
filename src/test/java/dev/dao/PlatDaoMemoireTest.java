@@ -1,9 +1,9 @@
 package dev.dao;
 
 import java.util.List;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 
-import org.junit.Before;
-import org.junit.Test;
 import static org.assertj.core.api.Assertions.*;
 
 import dev.entite.Plat;
@@ -12,7 +12,7 @@ public class PlatDaoMemoireTest {
 
 	private PlatDaoMemoire platDaoMemoire;
 
-	@Before
+	@BeforeEach
 	public void setUp() {
 		this.platDaoMemoire = new PlatDaoMemoire();
 	}
@@ -21,17 +21,21 @@ public class PlatDaoMemoireTest {
 	public void listerPlatsVideALInitialisation() { // TODO
 
 		List<Plat> resultat = platDaoMemoire.listerPlats();
-		assertThat(resultat.size()).isEqualTo(0);
+		assertThat(resultat).isEmpty();
 	}
 
 	@Test
 	public void ajouterPlatCasPassants() { // TODO
+		
+		int nbmDePlatAvant = platDaoMemoire.listerPlats().size();
 
 		platDaoMemoire.ajouterPlat("arroz", 55);
-		List<Plat> resultat = platDaoMemoire.listerPlats();
-		assertThat(resultat.size()).isEqualTo(1);
-//		assertThat(resultat.get(0).getNom()).isEqualTo("arroz");
-//		assertThat(resultat.get(0).getPrixEnCentimesEuros()).isEqualTo(55);
+		List<Plat> resultatApres = platDaoMemoire.listerPlats();
+		
+		
+		assertThat(resultatApres.size()).isEqualTo(nbmDePlatAvant+1);
+		assertThat(resultatApres).extracting(Plat::getNom).containsAnyOf("arroz");
+		assertThat(resultatApres).extracting(Plat::getPrixEnCentimesEuros).containsAnyOf(55);
 
 	}
 
