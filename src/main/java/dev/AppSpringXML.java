@@ -1,12 +1,16 @@
 package dev;
 
-
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import dev.ihm.Menu;
 
+/**
+ * @author helvin
+ *
+ */
 public class AppSpringXML {
 
+	
 	public static void main(String[] args) {
 
 		// Création du contexte Spring

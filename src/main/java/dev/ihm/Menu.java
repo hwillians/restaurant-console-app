@@ -14,74 +14,73 @@ import java.util.Map;
 import java.util.Scanner;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 
 import org.springframework.stereotype.Controller;
 
 @Controller
 public class Menu {
 
-    private Map<Integer, IOptionMenu> actions = new HashMap<>();
+	private Map<Integer, IOptionMenu> actions = new HashMap<>();
 
-    private String menu;
-    
-    private Scanner scanner;
+	private String menu;
 
-    public Menu(Scanner scanner, IPlatService service) {
-    		
-			 actions.put(1, new OptionListerPlats(service));
-			 actions.put(2, new OptionAjouterPlat(scanner, service));
-			 actions.put(99, new OptionTerminer());
-			 this.scanner = scanner;
-    }
-    
-    @Autowired
-    public Menu(Scanner scanner, List<IOptionMenu> optionMenus) {
-    	
-    	optionMenus.sort(Comparator.comparing(IOptionMenu::getPoids));
-        
-    	int index = 1;
-        for (IOptionMenu optionMenu: optionMenus) {
-            actions.put(index, optionMenu);
-            index++;
-        }
+	private Scanner scanner;
 
-        this.scanner = scanner;
+	public Menu(Scanner scanner, IPlatService service) {
 
-}
+		actions.put(1, new OptionListerPlats(service));
+		actions.put(2, new OptionAjouterPlat(scanner, service));
+		actions.put(99, new OptionTerminer());
+		this.scanner = scanner;
+	}
 
-    public void afficher() {
+	@Autowired
+	public Menu(Scanner scanner, List<IOptionMenu> optionMenus) {
 
-        boolean continuer = true;
+		optionMenus.sort(Comparator.comparing(IOptionMenu::getPoids));
 
-        while (continuer) {
+		int index = 1;
+		for (IOptionMenu optionMenu : optionMenus) {
+			actions.put(index, optionMenu);
+			index++;
+		}
 
-            System.out.println(getMenuTexte());
+		this.scanner = scanner;
 
-            int choix = this.scanner.nextInt();
+	}
 
-            try {
-                this.actions.get(choix).executer();
-            } catch (PlatException e) {
-                continuer = false;
-                System.out.println(e.getMessage());
-            }
-        }
-    }
+	public void afficher() {
 
-    private String getMenuTexte() {
-        if (menu == null) {
-            StringBuilder sb = new StringBuilder();
-            sb.append("** Restaurant Console App **");
-            sb.append("\n");
-            this.actions.forEach((index, option) -> {
-                sb.append(index);
-                sb.append(". ");
-                sb.append(option.getTitre());
-                sb.append("\n");
-            });
-            this.menu = sb.toString();
-        }
-        return this.menu;
-    }
+		boolean continuer = true;
+
+		while (continuer) {
+
+			System.out.println(getMenuTexte());
+
+			int choix = this.scanner.nextInt();
+
+			try {
+				this.actions.get(choix).executer();
+			} catch (PlatException e) {
+				continuer = false;
+				System.out.println(e.getMessage());
+			}
+		}
+	}
+
+	private String getMenuTexte() {
+		if (menu == null) {
+			StringBuilder sb = new StringBuilder();
+			sb.append("** Restaurant Console App **");
+			sb.append("\n");
+			this.actions.forEach((index, option) -> {
+				sb.append(index);
+				sb.append(". ");
+				sb.append(option.getTitre());
+				sb.append("\n");
+			});
+			this.menu = sb.toString();
+		}
+		return this.menu;
+	}
 }
