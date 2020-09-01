@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
-
 import dev.dao.IPlatDao;
 import dev.exception.PlatException;
 
@@ -21,30 +20,18 @@ class PlatServiceVersion1Test {
 
 	@Test
 	void ajouterPlatNomInvalideTest() {
-
-		Assertions.assertThrows(PlatException.class, () -> {
-			service.ajouterPlat("riz", 50000);
-			Mockito.verify(dao).ajouterPlat("riz", 50000);
-		});
-
+		Assertions.assertThrows(PlatException.class, () -> service.ajouterPlat("riz", 501));
 	}
 
 	@Test
 	void ajouterPlatPrixInvalideTest() {
-
-		Assertions.assertThrows(PlatException.class, () -> {
-			service.ajouterPlat("rizotto", 50);
-			Mockito.verify(dao).ajouterPlat("rizotto", 50);
-		});
-
+		Assertions.assertThrows(PlatException.class, () -> service.ajouterPlat("rizotto", 500));
 	}
 
 	@Test
 	void ajouterPlatValideTest() throws PlatException {
-
 		service.ajouterPlat("rizotto", 501);
 		Mockito.verify(dao).ajouterPlat("rizotto", 501);
-
 	}
 
 }
