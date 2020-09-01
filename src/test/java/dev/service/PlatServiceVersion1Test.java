@@ -34,7 +34,7 @@ class PlatServiceVersion1Test {
 	@Test
 	void ajouterPlatValideTest() throws PlatException {
 		service.ajouterPlat("rizotto", 501);
-		verify(dao, atLeastOnce()).ajouterPlat("rizotto", 501);
+		verify(dao).ajouterPlat("rizotto", 501);
 	}
 
 }
