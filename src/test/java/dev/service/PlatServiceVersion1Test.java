@@ -20,18 +20,21 @@ class PlatServiceVersion1Test {
 
 	@Test
 	void ajouterPlatNomInvalideTest() {
-		assertThrows(PlatException.class, () -> service.ajouterPlat("riz", 501));
+		PlatException exception = assertThrows(PlatException.class, () -> service.ajouterPlat("riz", 501));
+		assertEquals("un plat doit avoir un nom de plus de 3 caractères", exception.getMessage());
+
 	}
 
 	@Test
 	void ajouterPlatPrixInvalideTest() {
-		assertThrows(PlatException.class, () -> service.ajouterPlat("rizotto", 500));
+		PlatException exception = assertThrows(PlatException.class, () -> service.ajouterPlat("rizotto", 500));
+		assertEquals("le prix d'un plat doit être supérieur à 5 €", exception.getMessage());
 	}
 
 	@Test
 	void ajouterPlatValideTest() throws PlatException {
 		service.ajouterPlat("rizotto", 501);
-		verify(dao).ajouterPlat("rizotto", 501);
+		verify(dao, atLeastOnce()).ajouterPlat("rizotto", 501);
 	}
 
 }
