@@ -22,7 +22,6 @@ import static java.util.stream.Collectors.toList;
  *
  */
 @Repository
-@Primary
 @Profile("fichier")
 public class PlatDaoFichier implements IPlatDao {
 

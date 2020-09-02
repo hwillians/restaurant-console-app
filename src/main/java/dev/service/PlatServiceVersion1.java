@@ -11,7 +11,6 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 @Service
-@Primary
 @Profile("service1")
 public class PlatServiceVersion1 implements IPlatService {
 

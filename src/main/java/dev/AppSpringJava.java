@@ -1,6 +1,8 @@
 package dev;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.dao.DataAccessException;
+
 import dev.config.AppConfig;
 import dev.ihm.Menu;
 
@@ -19,7 +21,10 @@ public class AppSpringJava {
 			Menu menu = context.getBean(Menu.class);
 
 			menu.afficher();
-		}
+		}  catch (DataAccessException e) {
+            System.out.println("Problème d'accès à la base de données");
+        }
+
 
 	}
 

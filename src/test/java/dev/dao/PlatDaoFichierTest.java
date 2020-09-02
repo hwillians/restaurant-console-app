@@ -10,7 +10,6 @@ import org.springframework.test.context.junit.jupiter.SpringJUnitConfig;
 
 import dev.entite.Plat;
 
-
 @SpringJUnitConfig(PlatDaoFichier.class)
 @TestPropertySource("classpath:test.properties")
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
@@ -21,21 +20,19 @@ class PlatDaoFichierTest {
 
 	@Test
 	void ajouterPlatTest() {
-		
+
 		plat.ajouterPlat("arroz", 55);
 
-		
 		assertThat(this.plat.listerPlats().size()).isEqualTo(1);
 		assertThat(this.plat.listerPlats()).extracting(Plat::getNom).containsAnyOf("arroz");
 		assertThat(this.plat.listerPlats()).extracting(Plat::getPrixEnCentimesEuros).containsAnyOf(55);
 	}
-	
+
 	@Test
 	void ajouterPlatEncoreTest() {
-		
+
 		plat.ajouterPlat("arroz", 55);
 
-		
 		assertThat(this.plat.listerPlats().size()).isEqualTo(1);
 		assertThat(this.plat.listerPlats()).extracting(Plat::getNom).containsAnyOf("arroz");
 		assertThat(this.plat.listerPlats()).extracting(Plat::getPrixEnCentimesEuros).containsAnyOf(55);

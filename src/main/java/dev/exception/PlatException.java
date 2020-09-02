@@ -1,6 +1,6 @@
 package dev.exception;
 
-@SuppressWarnings("serial")
+
 public class PlatException extends RuntimeException {
 
     public PlatException() {
