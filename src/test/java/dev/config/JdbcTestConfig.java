@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Import;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 @Configuration
-@Import(DataSourceConfig.class)
+@Import(DataSourceH2TestConfig.class)
 public class JdbcTestConfig {
 	
 	@Bean
