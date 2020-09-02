@@ -11,10 +11,7 @@ import javax.sql.DataSource;
 
 import java.util.List;
 
-
 import dev.entite.Plat;
-
-
 
 /**
  * @author helvin
@@ -37,7 +34,7 @@ public class PlatDaoJdbc implements IPlatDao {
 
 	@Override
 	public void ajouterPlat(String nomPlat, Integer prixPlat) {
-		this.jdbcTemplate.update("Insert into plat (nom,prix) values(?,?)",nomPlat,prixPlat);
+		this.jdbcTemplate.update("Insert into plat (nom,prix) values(?,?)", nomPlat, prixPlat);
 
 	}
 

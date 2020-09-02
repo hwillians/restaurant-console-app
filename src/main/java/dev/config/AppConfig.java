@@ -8,13 +8,13 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
-
 /**
  * @author helvin
  *
  */
-@Configuration //Le stéréotype @Configuration précise que cette classe servira de configuration.
-@ComponentScan({"dev"})
+@Configuration // Le stéréotype @Configuration précise que cette classe servira de
+				// configuration.
+@ComponentScan({ "dev" })
 @PropertySource("app.properties")
 public class AppConfig {
 

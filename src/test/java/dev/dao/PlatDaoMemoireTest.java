@@ -26,14 +26,13 @@ public class PlatDaoMemoireTest {
 
 	@Test
 	public void ajouterPlatCasPassants() { // TODO
-		
+
 		int nbmDePlatAvant = platDaoMemoire.listerPlats().size();
 
 		platDaoMemoire.ajouterPlat("arroz", 55);
 		List<Plat> resultatApres = platDaoMemoire.listerPlats();
-		
-		
-		assertThat(resultatApres.size()).isEqualTo(nbmDePlatAvant+1);
+
+		assertThat(resultatApres.size()).isEqualTo(nbmDePlatAvant + 1);
 		assertThat(resultatApres).extracting(Plat::getNom).containsAnyOf("arroz");
 		assertThat(resultatApres).extracting(Plat::getPrixEnCentimesEuros).containsAnyOf(55);
 

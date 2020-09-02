@@ -14,24 +14,25 @@ import dev.entite.Plat;
 @Repository
 @Profile("jpa")
 public class PlatDaoJpa implements IPlatDao {
-	
-	@PersistenceContext private EntityManager em;
 
-	    @Override
-	public List<Plat> listerPlats() {
-		
-		return em.createQuery("select p from Plat p", Plat.class).getResultList();
-	
-	    }
+	@PersistenceContext
+	private EntityManager em;
 
 	@Override
-	@Transactional 
+	public List<Plat> listerPlats() {
+
+		return em.createQuery("select p from Plat p", Plat.class).getResultList();
+
+	}
+
+	@Override
+	@Transactional
 	public void ajouterPlat(String nomPlat, Integer prixPlat) {
-		
+
 		Plat p = new Plat();
 		p.setNom(nomPlat);
 		p.setPrixEnCentimesEuros(prixPlat);
-		
+
 		em.persist(p);
 
 	}
