@@ -14,11 +14,8 @@ import org.springframework.jdbc.datasource.DriverManagerDataSource;
 public class DataSourceConfig {
 
 	@Bean
-	public DataSource dataSource(
-			@Value("${bdd.driver}") String driver, 
-			@Value("${bdd.user}") String utilisateur,
-			@Value("${bdd.pass}") String motDePasse, 
-			@Value("${bdd.url}") String url) {
+	public DataSource dataSource(@Value("${bdd.driver}") String driver, @Value("${bdd.user}") String utilisateur,
+			@Value("${bdd.pass}") String motDePasse, @Value("${bdd.url}") String url) {
 		DriverManagerDataSource ds = new DriverManagerDataSource();
 		ds.setDriverClassName(driver);
 		ds.setUrl(url);
